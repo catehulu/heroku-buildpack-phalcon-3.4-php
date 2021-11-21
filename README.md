@@ -1,55 +1,22 @@
-# Heroku buildpack: PHP [![Build Status](https://circleci.com/gh/heroku/heroku-buildpack-php.svg?style=svg)](https://circleci.com/gh/heroku/heroku-buildpack-php)
+# Heroku buildpack: PHP 7.3 and Phalcon 3.4
 
-![php](https://cloud.githubusercontent.com/assets/51578/8882982/73ea501a-3219-11e5-8f87-311e6b8a86fc.jpg)
+![phalcon](https://assets.phalcon.io/phalcon/images/svg/phalcon-logo-transparent-black.svg)
 
+A heroku PHP buildpack for Phalcon 3.4
 
-This is the official [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for PHP applications.
-
-It uses Composer for dependency management, supports all recent versions of PHP as runtimes, and offers a choice of Apache2 or Nginx web servers.
+Feel free to change or update
 
 ## Usage
 
-You'll need to use at least an empty `composer.json` in your application.
+``` 
+heroku create phalcon-heroku-test // change the project name
+heroku config:set BUILDPACK_URL=https://github.com/catehulu/heroku-buildpack-phalcon-3.4-php 
+git push heroku main
+```
 
-    $ echo '{}' > composer.json
-    $ git add composer.json
-    $ git commit -m "add composer.json for PHP app detection"
+Tested on 21-11-2021 here https://phalcon-heroku-test.herokuapp.com/test.php
+Using this repository https://github.com/catehulu/phalcon-heroku-test
 
-If you also have files from other frameworks or languages that could trigger another buildpack to detect your application as one of its own, e.g. a `package.json` which might cause your code to be detected as a Node.js application even if it is a PHP application, then you need to manually set your application to use this buildpack:
-
-    $ heroku buildpacks:set heroku/php
-
-This will use the officially published version. To use the default branch from GitHub instead:
-
-    $ heroku buildpacks:set https://github.com/heroku/heroku-buildpack-php
-
-Please refer to [Dev Center](https://devcenter.heroku.com/categories/php) for further usage instructions.
-
-## Custom Platform Repositories
-
-The buildpack uses Composer repositories to resolve platform (`php`, `ext-something`, ...) dependencies.
-
-To use a custom Composer repository with additional or different platform packages, add the URL to its `packages.json` to the `HEROKU_PHP_PLATFORM_REPOSITORIES` config var:
-
-    $ heroku config:set HEROKU_PHP_PLATFORM_REPOSITORIES="https://mybucket.s3.amazonaws.com/heroku-18/packages.json"
-
-To allow the use of multiple custom repositories, the config var may hold a list of multiple repository URLs, separated by a space character, in ascending order of precedence.
-
-If the first entry in the list is "`-`" instead of a URL, the default platform repository is disabled entirely. This can be useful when testing development repositories, or to forcefully prevent the use of unwanted packages from the default platform repository.
-
-For instructions on how to build custom platform packages (and a repository to hold them), please refer to the instructions [further below](#custom-platform-packages-and-repositories).
-
-**Please note that Heroku cannot provide support for issues related to custom platform repositories and packages.**
-
-## Development
-
-The following information only applies if you're forking and hacking on this buildpack for your own purposes.
-
-### Pull Requests
-
-Please submit all pull requests against `develop` as the base branch.
-
-### Custom Platform Packages and Repositories
-
-Please refer to the [README in `support/build/`](support/build/README.md) for instructions.
-
+resource :
+https://www.sitepoint.com/install-custom-php-extensions-heroku/
+https://devcenter.heroku.com/articles/php-support
