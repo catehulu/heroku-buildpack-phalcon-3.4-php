@@ -14,9 +14,9 @@ heroku config:set BUILDPACK_URL=https://github.com/catehulu/heroku-buildpack-pha
 git push heroku main
 ```
 
-Tested on 21-11-2021 here https://phalcon-heroku-test.herokuapp.com/test.php
-Using this repository https://github.com/catehulu/phalcon-heroku-test
+Tested on 21-11-2021 here https://phalcon-heroku-test.herokuapp.com/test.php  
+Using this repository https://github.com/catehulu/phalcon-heroku-test  
 
-resource :
-https://www.sitepoint.com/install-custom-php-extensions-heroku/
-https://devcenter.heroku.com/articles/php-support
+resource :  
+https://www.sitepoint.com/install-custom-php-extensions-heroku/  
+https://devcenter.heroku.com/articles/php-support  
