@@ -704,7 +704,7 @@ cd $build_dir/$composer_bindir
 ln -fs $relbins .
 cd $build_dir
 
-source $BP_DIR/bin/phalcon
+source $bp_dir/bin/phalcon
 
 if [[ ! -f "Procfile" ]]; then
 	echo "web: heroku-php-apache2" > Procfile
